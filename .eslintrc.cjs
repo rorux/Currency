@@ -12,7 +12,6 @@ module.exports = {
   extends: [
     'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
   ],
   env: {
     browser: true,
