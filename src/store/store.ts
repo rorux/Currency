@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { currenciesReducer } from "@features/currencies";
+import { chartsReducer } from "@features/charts";
 
 export const store = configureStore({
   reducer: {
     currencies: currenciesReducer,
+    charts: chartsReducer,
   },
   devTools: true,
 });
