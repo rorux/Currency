@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { Button, Col, Row } from "react-bootstrap";
 import { uniqueId } from "lodash";
 import { useAppDispatch } from "@store";
-import { addChart } from "@features/charts";
+import { addChart, updateChart } from "@features/charts";
 import { Dialog, Select } from "@components";
 import { ChartColorPicker } from "../chart-color-picker";
 import { useCurrency } from "./use-currency";
@@ -11,15 +11,20 @@ import { NewChartDialogProps } from "./types";
 
 const defaultColor = "#888";
 
-export const NewChartDialog = ({
+export const ChartDialog = ({
+  id,
+  currency,
+  lColor,
+  fColor,
+  title,
   show,
   setShow,
 }: NewChartDialogProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const [lineColor, setLineColor] = useState(defaultColor);
-  const [fillColor, setFillColor] = useState(defaultColor);
+  const [lineColor, setLineColor] = useState(lColor ?? defaultColor);
+  const [fillColor, setFillColor] = useState(fColor ?? defaultColor);
   const { selectedCurrency, setCurrency, currencies, changeCurrency } =
-    useCurrency();
+    useCurrency(currency);
 
   const handleClose = () => setShow(false);
 
@@ -28,12 +33,12 @@ export const NewChartDialog = ({
       toast.error("Choose a currency!");
     } else {
       const newChart = {
-        id: uniqueId("chart_"),
+        id: id ?? uniqueId("chart_"),
         currency: selectedCurrency,
         lineColor,
         fillColor,
       };
-      dispatch(addChart(newChart));
+      dispatch(id ? updateChart(newChart) : addChart(newChart));
       setLineColor(defaultColor);
       setFillColor(defaultColor);
       setCurrency(null);
@@ -42,8 +47,12 @@ export const NewChartDialog = ({
   };
 
   return (
-    <Dialog title="New Chart Settings" show={show} handleClose={handleClose}>
-      <Select data={currencies} handleChange={changeCurrency} />
+    <Dialog title={title} show={show} handleClose={handleClose}>
+      <Select
+        data={currencies}
+        selected={currency}
+        handleChange={changeCurrency}
+      />
       <Row className="mt-4">
         <Col className="mb-4 mb-sm-0">
           <ChartColorPicker
@@ -63,7 +72,7 @@ export const NewChartDialog = ({
 
       <div className="text-center mb-2">
         <Button variant="primary" className="mt-4" onClick={handleClick}>
-          Add chart
+          {id ? "Update" : "Add"} chart
         </Button>
       </div>
     </Dialog>

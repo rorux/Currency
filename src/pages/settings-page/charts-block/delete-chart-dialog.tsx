@@ -24,14 +24,14 @@ export const DeleteChartDialog = ({
     >
       <Row>
         <Col>
-          <Button className="w-100" variant="success" onClick={handleClick}>
+          <Button className="w-100" variant="danger" onClick={handleClick}>
             Yes
           </Button>
         </Col>
         <Col>
           <Button
             className="w-100"
-            variant="danger"
+            variant="secondary"
             onClick={() => setShow(false)}
           >
             No

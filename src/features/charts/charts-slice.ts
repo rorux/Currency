@@ -13,6 +13,13 @@ const chartsSlice = createSlice({
     addChart: (state, action: PayloadAction<Chart>) => {
       state.data.push(action.payload);
     },
+    updateChart: (state, action: PayloadAction<Chart>) => {
+      const id = action.payload.id;
+      state.data = state.data.reduce((acc, chart) => {
+        if (chart.id === id) return [...acc, action.payload];
+        else return [...acc, chart];
+      }, [] as Chart[]);
+    },
     removeChart: (state, action: PayloadAction<string>) => {
       state.data = state.data.filter((chart) => chart.id !== action.payload);
     },
@@ -20,7 +27,7 @@ const chartsSlice = createSlice({
 });
 
 export const chartsReducer = chartsSlice.reducer;
-export const { addChart, removeChart } = chartsSlice.actions;
+export const { addChart, updateChart, removeChart } = chartsSlice.actions;
 
 const charts = (state: RootState) => state.charts.data;
 
