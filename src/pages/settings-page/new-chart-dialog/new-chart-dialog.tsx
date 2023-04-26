@@ -29,6 +29,7 @@ export const NewChartDialog = ({
         fillColor,
       };
       dispatch(addChart(newChart));
+      setShow(false);
     }
   };
 
