@@ -47,6 +47,12 @@
       ],
       "@components": [
         "src/components"
+      ],
+      "@widgets/*": [
+        "src/widgets/*"
+      ],
+      "@constants": [
+        "src/constants"
       ]
     }
   },
