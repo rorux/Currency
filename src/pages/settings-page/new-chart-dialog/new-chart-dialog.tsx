@@ -35,7 +35,7 @@ export const NewChartDialog = ({
   return (
     <Dialog title="New Chart Settings" show={show} handleClose={handleClose}>
       <Select data={currencies} handleChange={changeCurrency} />
-      <Row className="mt-3">
+      <Row className="mt-4">
         <Col className="mb-4 mb-sm-0">
           <ChartColorPicker
             title="Set the line color"

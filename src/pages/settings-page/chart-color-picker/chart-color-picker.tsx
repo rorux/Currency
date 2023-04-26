@@ -9,11 +9,11 @@ export const ChartColorPicker = ({
 }: ChartColorPickerProps): React.ReactElement => {
   return (
     <>
-      <div className="mb-2 h6 ps-1">{title}</div>
+      <div className="mb-3 h6 ps-1">{title}</div>
       <Placeholder
-        className="mb-2 opacity-100"
+        className="mb-3 opacity-100"
         xs={12}
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: color, cursor: "default" }}
       />
       <ColorPicker colorHexCode={color} setColorHexCode={setColor} />
     </>
