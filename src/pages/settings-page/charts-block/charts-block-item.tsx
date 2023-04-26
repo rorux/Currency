@@ -44,7 +44,7 @@ export const ChartsBlockItem = ({
       <DeleteChartDialog
         show={showDeleteDialog}
         setShow={setShowDeleteDialog}
-        currency={chart.currency}
+        chart={chart}
       />
     </Card>
   );

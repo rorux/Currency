@@ -9,7 +9,7 @@ export type ChartsBlockItemProps = {
 };
 
 export type DeleteChartDialogProps = {
-  currency: string;
+  chart: Chart;
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 };

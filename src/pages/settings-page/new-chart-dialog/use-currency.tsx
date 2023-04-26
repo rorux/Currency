@@ -5,6 +5,7 @@ export const useCurrency = (): {
   selectedCurrency: string | null;
   currencies: string[];
   changeCurrency: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  setCurrency: React.Dispatch<React.SetStateAction<string | null>>;
 } => {
   const [currency, setCurrency] = useState<string | null>(null);
   const { data } = useAppSelector((state) => state.currencies);
@@ -18,6 +19,7 @@ export const useCurrency = (): {
   return {
     selectedCurrency: currency,
     currencies: data,
+    setCurrency,
     changeCurrency: handleChange,
   };
 };

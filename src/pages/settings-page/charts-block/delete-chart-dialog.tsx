@@ -5,20 +5,20 @@ import { Dialog } from "@components";
 import { DeleteChartDialogProps } from "./types";
 
 export const DeleteChartDialog = ({
-  currency,
+  chart,
   show,
   setShow,
 }: DeleteChartDialogProps): React.ReactElement => {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(removeChart(currency));
+    dispatch(removeChart(chart.id));
     setShow(false);
   };
 
   return (
     <Dialog
-      title={<span>Delete chart {currency}?</span>}
+      title={<span>Delete chart {chart.currency}?</span>}
       show={show}
       handleClose={() => setShow(false)}
     >

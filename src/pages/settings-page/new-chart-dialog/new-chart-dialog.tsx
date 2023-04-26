@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Button, Col, Row } from "react-bootstrap";
+import { uniqueId } from "lodash";
 import { useAppDispatch } from "@store";
 import { addChart } from "@features/charts";
 import { Dialog, Select } from "@components";
@@ -8,14 +9,17 @@ import { ChartColorPicker } from "../chart-color-picker";
 import { useCurrency } from "./use-currency";
 import { NewChartDialogProps } from "./types";
 
+const defaultColor = "#888";
+
 export const NewChartDialog = ({
   show,
   setShow,
 }: NewChartDialogProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const [lineColor, setLineColor] = useState("#888");
-  const [fillColor, setFillColor] = useState("#888");
-  const { selectedCurrency, currencies, changeCurrency } = useCurrency();
+  const [lineColor, setLineColor] = useState(defaultColor);
+  const [fillColor, setFillColor] = useState(defaultColor);
+  const { selectedCurrency, setCurrency, currencies, changeCurrency } =
+    useCurrency();
 
   const handleClose = () => setShow(false);
 
@@ -24,11 +28,15 @@ export const NewChartDialog = ({
       toast.error("Choose a currency!");
     } else {
       const newChart = {
+        id: uniqueId("chart_"),
         currency: selectedCurrency,
         lineColor,
         fillColor,
       };
       dispatch(addChart(newChart));
+      setLineColor(defaultColor);
+      setFillColor(defaultColor);
+      setCurrency(null);
       setShow(false);
     }
   };

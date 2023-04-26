@@ -14,9 +14,7 @@ const chartsSlice = createSlice({
       state.data.push(action.payload);
     },
     removeChart: (state, action: PayloadAction<string>) => {
-      state.data = state.data.filter(
-        (chart) => chart.currency !== action.payload
-      );
+      state.data = state.data.filter((chart) => chart.id !== action.payload);
     },
   },
 });
