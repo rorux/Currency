@@ -1,16 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer, Flip } from "react-toastify";
 import { Router } from "@router";
-import { useCurrencies } from "./hooks/use-currencies";
+import { useCurrencies } from "@hooks";
+import { Loader } from "@components";
 
 function App() {
-  useCurrencies();
+  const { loading } = useCurrencies();
 
   return (
     <>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <BrowserRouter>{loading ? <Loader /> : <Router />}</BrowserRouter>
       <ToastContainer
         transition={Flip}
         position="top-center"

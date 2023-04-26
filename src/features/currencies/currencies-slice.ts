@@ -29,7 +29,11 @@ const initialState: CurrenciesState = {
 const currenciesSlice = createSlice({
   name: "@@currencies",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanCurrenciesError: (state) => {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCurrenciesList.pending, (state) => {
@@ -48,3 +52,4 @@ const currenciesSlice = createSlice({
 });
 
 export const currenciesReducer = currenciesSlice.reducer;
+export const { cleanCurrenciesError } = currenciesSlice.actions;

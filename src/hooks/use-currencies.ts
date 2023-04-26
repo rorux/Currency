@@ -1,11 +1,20 @@
-import { useAppDispatch } from "@store";
+import { useAppDispatch, useAppSelector } from "@store";
 import { useEffect } from "react";
-import { getCurrenciesList } from "@features/currencies";
+import { toast } from "react-toastify";
+import { cleanCurrenciesError, getCurrenciesList } from "@features/currencies";
 
-export const useCurrencies = (): void => {
+export const useCurrencies = (): { loading: boolean } => {
   const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector((state) => state.currencies);
+
+  if (error) {
+    toast.error(error);
+    dispatch(cleanCurrenciesError());
+  }
 
   useEffect(() => {
     dispatch(getCurrenciesList());
   }, []);
+
+  return { loading };
 };
