@@ -9,6 +9,12 @@ a {
   text-decoration: none;
 }
 
+svg {
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

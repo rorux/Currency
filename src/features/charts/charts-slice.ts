@@ -38,6 +38,6 @@ export const selectStringifiedChartsList = createSelector(
       (acc, chart) => [...acc, chart.currency],
       [] as string[]
     );
-    return chartList.join(",");
+    return [...new Set(chartList)].join(",");
   }
 );

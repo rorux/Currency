@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Card, Col, Placeholder, Row } from "react-bootstrap";
 import { BsFillTrashFill, BsPencilSquare } from "react-icons/bs";
 import { DeleteChartDialog } from "./delete-chart-dialog";
+import { ChartDialog } from "../chart-dialog";
 import { ChartsBlockItemProps } from "./types";
-import { ChartDialog } from "@pages/settings-page/chart-dialog";
 
 export const ChartsBlockItem = ({
   chart,
@@ -14,7 +14,9 @@ export const ChartsBlockItem = ({
   return (
     <Card>
       <Card.Header className="d-flex align-items-center">
-        <span className="flex-grow-1">{chart.currency}</span>
+        <span className="flex-grow-1">
+          <strong>{chart.currency}</strong>
+        </span>
         <BsPencilSquare
           className="me-2 cursor-pointer"
           onClick={() => setShowUpdatedChartDialog(true)}
