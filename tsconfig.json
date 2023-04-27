@@ -36,8 +36,8 @@
       "@features/*": [
         "src/features/*"
       ],
-      "@utils": [
-        "src/utils"
+      "@utils/*": [
+        "src/utils/*"
       ],
       "@api": [
         "src/api"
