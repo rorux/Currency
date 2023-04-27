@@ -3,6 +3,7 @@ import { DatePickerProps } from "./types";
 
 export const DatePicker = ({
   name,
+  label,
   setDate,
   defaultValue,
   min,
@@ -13,7 +14,9 @@ export const DatePicker = ({
 
   return (
     <Form.Group controlId={name}>
-      <Form.Label>Ending</Form.Label>
+      <Form.Label>
+        <small>{label}</small>
+      </Form.Label>
       <Form.Control
         type="date"
         name={name}
