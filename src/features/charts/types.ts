@@ -2,7 +2,7 @@ export type Chart = {
   id: string;
   currency: string;
   lineColor: string;
-  fillColor: string;
+  pointColor: string;
 };
 
 export type ChartsState = {

@@ -14,7 +14,10 @@ const getTicksLabelsPeriodicity = (ticksCount: number): string => {
   } else return "every year";
 };
 
-export const LinearChart = ({ data }: LinearChartProps): React.ReactElement => {
+export const LinearChart = ({
+  data,
+  pointColor,
+}: LinearChartProps): React.ReactElement => {
   const ticksCount = data[0].data.length;
 
   return (
@@ -52,7 +55,7 @@ export const LinearChart = ({ data }: LinearChartProps): React.ReactElement => {
         tickRotation: 0,
       }}
       pointSize={10}
-      pointColor={"white"}
+      pointColor={pointColor}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}

@@ -31,19 +31,27 @@ export const ChartsBlockItem = ({
           <Col>Line color</Col>
           <Col>
             <Placeholder
-              className="opacity-100"
+              className="opacity-100 shadow-sm"
               xs={12}
-              style={{ backgroundColor: chart.lineColor, cursor: "default" }}
+              style={{
+                backgroundColor: chart.lineColor,
+                cursor: "default",
+                border: "1px solid #ddd",
+              }}
             />
           </Col>
         </Row>
         <Row>
-          <Col>Fill color</Col>
+          <Col>Points color</Col>
           <Col>
             <Placeholder
-              className="opacity-100"
+              className="opacity-100 shadow-sm"
               xs={12}
-              style={{ backgroundColor: chart.fillColor, cursor: "default" }}
+              style={{
+                backgroundColor: chart.pointColor,
+                cursor: "default",
+                border: "1px solid #ddd",
+              }}
             />
           </Col>
         </Row>
@@ -60,7 +68,7 @@ export const ChartsBlockItem = ({
         id={chart.id}
         currency={chart.currency}
         lColor={chart.lineColor}
-        fColor={chart.fillColor}
+        pColor={chart.pointColor}
       />
     </Card>
   );

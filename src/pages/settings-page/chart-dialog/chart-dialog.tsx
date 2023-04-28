@@ -9,20 +9,21 @@ import { ChartColorPicker } from "../chart-color-picker";
 import { useCurrency } from "./use-currency";
 import { NewChartDialogProps } from "./types";
 
-const defaultColor = "#888";
+const defaultLineColor = "#888";
+const defaultPointColor = "#fff";
 
 export const ChartDialog = ({
   id,
   currency,
   lColor,
-  fColor,
+  pColor,
   title,
   show,
   setShow,
 }: NewChartDialogProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const [lineColor, setLineColor] = useState(lColor ?? defaultColor);
-  const [fillColor, setFillColor] = useState(fColor ?? defaultColor);
+  const [lineColor, setLineColor] = useState(lColor ?? defaultLineColor);
+  const [pointColor, setPointColor] = useState(pColor ?? defaultPointColor);
   const { selectedCurrency, setCurrency, currencies, changeCurrency } =
     useCurrency(currency);
 
@@ -36,11 +37,11 @@ export const ChartDialog = ({
         id: id ?? uniqueId("chart_"),
         currency: selectedCurrency,
         lineColor,
-        fillColor,
+        pointColor,
       };
       dispatch(id ? updateChart(newChart) : addChart(newChart));
-      setLineColor(defaultColor);
-      setFillColor(defaultColor);
+      setLineColor(defaultLineColor);
+      setPointColor(defaultPointColor);
       setCurrency(null);
       setShow(false);
     }
@@ -63,9 +64,9 @@ export const ChartDialog = ({
         </Col>
         <Col>
           <ChartColorPicker
-            title="Set the fill color"
-            color={fillColor}
-            setColor={setFillColor}
+            title="Set the points color"
+            color={pointColor}
+            setColor={setPointColor}
           />
         </Col>
       </Row>

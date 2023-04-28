@@ -16,6 +16,7 @@ export const LinearChartsBlock = ({
             </Card.Header>
             <Card.Body style={{ height: "300px" }}>
               <LinearChart
+                pointColor={chart.pointColor}
                 data={[
                   {
                     id: chart.currency,
