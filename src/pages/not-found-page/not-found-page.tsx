@@ -5,8 +5,8 @@ export const NotFoundPage = (): React.ReactElement => {
   return (
     <>
       <Header />
-      <Container>
-        <h1>Page is not found...</h1>
+      <Container className="py-4">
+        <h2 className="text-center">Page is not found...</h2>
       </Container>
     </>
   );
