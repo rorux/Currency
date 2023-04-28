@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@store";
 import { selectStringifiedChartsList } from "@features/charts";
 import { getHistoricalData } from "@features/historical";
 
-export const useHistorical = (dateFrom: string, dateTo: string): void => {
+export const useHistorical = (dateFrom: string, dateTo: string): boolean => {
   const dispatch = useAppDispatch();
   const stringifiedChartsList = useAppSelector(selectStringifiedChartsList);
 
@@ -17,4 +17,6 @@ export const useHistorical = (dateFrom: string, dateTo: string): void => {
         })
       );
   }, [stringifiedChartsList, dateFrom, dateTo]);
+
+  return !!stringifiedChartsList;
 };

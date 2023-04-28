@@ -18,29 +18,37 @@ const endDate = ShortLocalizedDateFormatter(yesterday, "yyyy-MM-dd");
 export const DatePickersPanel = (): React.ReactElement => {
   const [dateFrom, setDateFrom] = useState(beginDate);
   const [dateTo, setDateTo] = useState(endDate);
-  useHistorical(dateFrom, dateTo);
+  const hasCharts = useHistorical(dateFrom, dateTo);
 
   return (
-    <Card className="p-3 pt-2 mb-4" style={{ backgroundColor: "#f7f7f7" }}>
-      <Row>
-        <Col>
-          <DatePicker
-            name="begin"
-            label="Beginning"
-            setDate={setDateFrom}
-            defaultValue={dateFrom}
-          />
-        </Col>
-        <Col>
-          <DatePicker
-            name="end"
-            label="Ending"
-            setDate={setDateTo}
-            defaultValue={dateTo}
-            max={endDate}
-          />
-        </Col>
-      </Row>
-    </Card>
+    <>
+      {hasCharts ? (
+        <Card className="p-3 pt-2 mb-4" style={{ backgroundColor: "#f7f7f7" }}>
+          <Row>
+            <Col>
+              <DatePicker
+                name="begin"
+                label="Beginning"
+                setDate={setDateFrom}
+                defaultValue={dateFrom}
+              />
+            </Col>
+            <Col>
+              <DatePicker
+                name="end"
+                label="Ending"
+                setDate={setDateTo}
+                defaultValue={dateTo}
+                max={endDate}
+              />
+            </Col>
+          </Row>
+        </Card>
+      ) : (
+        <p className="text-center">
+          There are no charts. Configure charts on the "Settings" page.
+        </p>
+      )}
+    </>
   );
 };
